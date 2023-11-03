@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Add Channel{% endblock %}
+{% block content %}
+    <form method="POST" action="{% url 'add_channel' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value='Add Channel'>
+    </form>
+{% endblock %}
