@@ -9,9 +9,9 @@ def add_channel(request):
         form = ChannelForm(request.POST)
         if form.is_valid():
             channel_name = form.cleaned_data['channel_name']
-            hls_stream_url = form.cleaned_data['hls_stream_url']
-
-            bash_command = f"{channel_name} {hls_stream_url}"
+            udp_stream = form.cleaned_data['udp_stream']
+            preset = form.cleaned_data['preset']
+            bash_command = f"{channel_name} {udp_stream} {preset}"
 
             try:
                 subprocess.run(bash_command,shell=True,check=True)

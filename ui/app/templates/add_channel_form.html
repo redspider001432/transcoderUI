@@ -1,10 +1,41 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Add Channel{% endblock %}
 {% block content %}
     <form method="POST" action="{% url 'add_channel' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input class="btn btn-primary" type="submit" value='Add Channel'>
+        <table>
+            <tr>
+                <td><label for="{{ form.channel_name.id_for_label }}">Channel Name:</label></td>
+                <td>{{ form.channel_name }}</td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.udp_stream.id_for_label }}">UDP Stream:</label></td>
+                <td>{{ form.udp_stream }}</td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.video_codec.id_for_label }}">Video Codec:</label></td>
+                <td>{{ form.video_codec }}</td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.audio_codec.id_for_label }}">Audio Codec:</label></td>
+                <td>{{ form.audio_codec }}</td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.preset.id_for_label }}">Select Preset:</label></td>
+                <td>{{ form.preset }}</td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.video_bitrate.id_for_label }}">Video Bitrate:</label></td>
+                <td>{{ form.video_bitrate }}</td>
+            </tr>
+            <tr>
+                <td><label for="{{ form.resolution.id_for_label }}">Resolution:</label></td>
+                <td>{{ form.resolution }}</td>
+            </tr>
+        </table>
+        <input class="btn btn-primary" type="submit" value="Add Channel">
     </form>
+<link rel="stylesheet" type="text/css" href="{% static 'table.css' %}">
 {% endblock %}
+
