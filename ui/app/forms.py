@@ -18,7 +18,7 @@ AUDIO_CHOICES =[
 
 class ChannelForm(forms.Form):
     channel_name = forms.CharField(label='Channel Name', max_length=100)
-    udp_stream = forms.URLField(label='UDP Stream')
+    udp_stream = forms.CharField(label='UDP Stream')
     video_codec = forms.ChoiceField(label='Video Codec',choices=VIDEO_CHOICES)
     audio_codec = forms.ChoiceField(label='Audio Codec',choices=AUDIO_CHOICES)
     preset = forms.ChoiceField(label='Select Preset', choices=PRESET_CHOICES, required=True)

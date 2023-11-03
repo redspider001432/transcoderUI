@@ -1,5 +1,28 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-
+<h1>Channels:</h1>
+<table class="table custom-table">
+  <thead>
+    <tr>
+      <th>Channel Name</th>
+      <th>Video Bitrate</th>
+      <th>Output Url</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for channel in channels %}
+      <tr>
+        <td>{{ channel.channel_name }}</td>
+        <td>{{ channel.video_bitrate }}</td>
+        <td>{{ channel.url }}</td>
+        <td>
+          <a href="{% url 'edit_channel'%}" class="btn btn-sm btn-primary">Edit</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
 {% endblock %}

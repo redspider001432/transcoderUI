@@ -1,9 +1,10 @@
 from django.shortcuts import render ,redirect
 import subprocess
 from .forms import ChannelForm
-
+from .models import Channels
 def homepage(request):
-    return render(request,'home.html')
+    channels = Channels.objects.all()
+    return render(request,'home.html',{'channels':channels})
 def add_channel(request):
     if request.method == 'POST':
         form = ChannelForm(request.POST)
@@ -22,24 +23,5 @@ def add_channel(request):
         form = ChannelForm()
     return render(request,'add_channel_form.html',{'form':form})
 
-
-
-
-# def execute_command(request):
-#     if request.method == 'POST':
-#         form = CommandForm(request.POST)
-#         if form.is_valid():
-#             channel_name = form.cleaned_data['channel_name']
-#             command = form.cleaned_data['command']
-
-
-#             try:
-#                 result = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT, text=True)
-#             except subprocess.CalledProcessError as e:
-#                 result = e.output
-
-#             return render(request, 'result.html',{'channel_name':channel_name,'result':result})
-#         else:
-#             form = CommandForm()
-
-#         return render(request, 'execute_command.html',{'form':form})
+def edit_channel(request):
+    pass
