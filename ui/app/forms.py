@@ -15,12 +15,17 @@ AUDIO_CHOICES =[
     ('mp2','mp2'),
     ('mp3','mp3')
 ]
-
+RESOLUTION_CHOICES = [
+    ('720:480','SD'),
+    ('1280:720','HD'),
+    ('1920:1080','Full HD')
+]
 class ChannelForm(forms.Form):
     channel_name = forms.CharField(label='Channel Name', max_length=100)
-    udp_stream = forms.CharField(label='UDP Stream')
+    stream = forms.CharField(label='Input Stream',max_length=100)
     video_codec = forms.ChoiceField(label='Video Codec',choices=VIDEO_CHOICES)
     audio_codec = forms.ChoiceField(label='Audio Codec',choices=AUDIO_CHOICES)
     preset = forms.ChoiceField(label='Select Preset', choices=PRESET_CHOICES, required=True)
-    video_bitrate = forms.IntegerField(label='Video Bitrate',min_value='0',max_value='6000')
-    resolution = forms.CharField(label='Resolution',max_length=100)
+    video_bitrate = forms.IntegerField(label='Video Bitrate',min_value=0,max_value=5000)
+    resolution = forms.ChoiceField(label='Resolution',choices=RESOLUTION_CHOICES)
+    output_url = forms.CharField(label='Output Stream',max_length=50)

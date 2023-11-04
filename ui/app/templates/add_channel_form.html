@@ -10,8 +10,8 @@
                 <td>{{ form.channel_name }}</td>
             </tr>
             <tr>
-                <td><label for="{{ form.udp_stream.id_for_label }}">UDP Stream:</label></td>
-                <td>{{ form.udp_stream }}</td>
+                <td><label for="{{ form.stream.id_for_label }}">Input Stream:</label></td>
+                <td>{{ form.stream }}</td>
             </tr>
             <tr>
                 <td><label for="{{ form.video_codec.id_for_label }}">Video Codec:</label></td>
@@ -33,8 +33,12 @@
                 <td><label for="{{ form.resolution.id_for_label }}">Resolution:</label></td>
                 <td>{{ form.resolution }}</td>
             </tr>
+            <tr>
+                <td><label for="{{ form.output_url.id_for_label }}">Output Stream:</label></td>
+                <td>{{ form.output_url }}</td>
+            </tr>
         </table>
-        <input class="btn btn-primary" type="submit" value="Add Channel">
+        <input class="btn btn-primary mt-3" type="submit" value="Submit">
     </form>
 <link rel="stylesheet" type="text/css" href="{% static 'table.css' %}">
 {% endblock %}
